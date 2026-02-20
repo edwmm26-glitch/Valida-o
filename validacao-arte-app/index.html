@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Validação de Arte</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= TELA DE LOGIN / ACESSO NEGADO ================= -->
+<div id="loginPage" class="vh-100 d-flex align-items-center justify-content-center bg-gradient-primary">
+  <div class="card p-4 shadow-lg text-center" style="width:380px">
+    <div class="text-center mb-4">
+      <img src="imagens/logo.png" style="width:120px;">
+    </div>
+    <h4 class="mb-4">Validação de Arte</h4>
+    
+    <div id="loading" class="mb-3">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="mt-2">Verificando acesso...</p>
+    </div>
+    
+    <p id="loginError" class="text-danger mb-3 d-none"></p>
+    
+    <button id="btnRetry" class="btn btn-primary w-100 d-none" onclick="verificarAcesso()">Tentar novamente</button>
+  </div>
+</div>
+
+<!-- ================= SISTEMA ================= -->
+<div id="mainPage" class="d-none">
+  <div class="d-flex">
+
+    <!-- ===== SIDEBAR ===== -->
+    <nav class="sidebar bg-dark text-white p-3 vh-100 position-fixed" style="width:250px">
+
+      <!-- LOGO SIDEBAR -->
+      <div class="text-center mb-4">
+        <img src="imagens/logo.png" style="width:120px;">
+      </div>
+
+      <h5 class="text-center mb-4">Menu</h5>
+
+      <ul class="list-unstyled" id="menuLateral">
+        <!-- Comunicação padrão -->
+        <li class="mb-3">
+          <a class="nav-link text-white" onclick="carregarSolicitacoes()">Solicitações</a>
+        </li>
+
+        <li class="mb-3 d-none" id="menuPendentes">
+          <a class="nav-link text-warning" onclick="filtrarPendentes()">Pendentes</a>
+        </li>
+
+        <li class="mb-3 d-none" id="menuHistorico">
+          <a class="nav-link text-info" onclick="filtrarHistorico()">Histórico</a>
+        </li>
+
+        <li class="mb-3">
+          <a onclick="logout()" class="nav-link text-danger">Sair</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ===== MAIN ===== -->
+    <main class="flex-grow-1 p-4" style="margin-left:250px">
+
+      <!-- SAUDAÇÃO -->
+      <h5 id="saudacao" class="mb-3"></h5>
+
+      <div class="d-flex justify-content-between mb-3">
+        <h3>Solicitações</h3>
+
+        <button id="btnNova" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
+          + Nova Solicitação
+        </button>
+      </div>
+
+      <div id="tableArea" class="card p-3 shadow-sm">
+        Carregando...
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ================= MODAL NOVA SOLICITAÇÃO ================= -->
+<div class="modal fade" id="createModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <form id="createForm">
+
+        <div class="modal-header bg-primary text-white">
+          <h5>Nova Solicitação</h5>
+          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <!-- DROPDOWN EQUIPE (só aparece para Comunicação) -->
+          <select id="nomeEquipe" class="form-select mb-3 d-none"></select>
+
+          <textarea id="descricao" class="form-control mb-3" placeholder="Descrição" required></textarea>
+
+          <select id="prioridade" class="form-select mb-3">
+            <option value="Crítica">Crítica</option>
+            <option value="Alta">Alta</option>
+            <option value="Média">Média</option>
+            <option value="Baixa">Baixa</option>
+          </select>
+
+          <input id="imagens" type="file" class="form-control mb-2" multiple accept="image/*">
+
+          <input id="video" type="file" class="form-control" accept="video/*">
+
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary w-100">Criar Solicitação</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MODAL MÍDIAS ================= -->
+<div class="modal fade" id="mediaModal">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <div class="modal-header bg-info text-white">
+        <h5>Mídias</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <!-- CARROSSEL 3D -->
+        <div id="gallery" class="carousel-3d d-flex justify-content-center flex-wrap"></div>
+
+        <video id="videoPlayer" class="w-100 mt-3 d-none" controls></video>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= TOAST CENTRAL ================= -->
+<div id="toastGlobal" class="toast-center"></div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
