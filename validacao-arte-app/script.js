@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbyVScX9AfEPdzIlO4SGf0srqDt9EK48plPh1Nol6fpxMkLs1dToSJ973LpwT_KzJaOwIA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxqUxSqgjwLVdfhbbfXHDfvF6vuqvFd3fHw6isGm1QxAxBeMrKvjKeBOleS6xyD22sFQg/exec";
 
 let usuarioLogado = ""; // "comunicacao" ou "juridico"
 let listaGlobal = [];
@@ -303,3 +303,4 @@ function fileToBase64(file) {
 function logout() {
   location.reload();
 }
+
