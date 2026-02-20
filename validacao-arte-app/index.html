@@ -20,7 +20,11 @@
     <h4 class="text-center mb-3">Validação de Arte</h4>
 
     <form id="loginForm">
-      <input id="usuarioInput" class="form-control mb-2" placeholder="Usuário (ex: Cauã ou Dr. Ismênia)" required>
+      <select id="equipeInput" class="form-select mb-2" required>
+        <option value="" disabled selected>Selecione a equipe</option>
+        <option value="comunicacao">Comunicação</option>
+        <option value="juridico">Jurídico</option>
+      </select>
       <input id="senhaInput" type="password" class="form-control mb-3" placeholder="Senha" required>
       <button class="btn btn-primary w-100">Entrar</button>
     </form>
@@ -33,42 +37,37 @@
 <div id="mainPage" class="d-none">
   <div class="d-flex">
 
+    <!-- SIDEBAR -->
     <nav class="sidebar bg-dark text-white p-3 vh-100 position-fixed" style="width:250px">
       <div class="text-center mb-4">
         <img src="imagens/logo.png" style="width:120px;">
       </div>
-
       <h5 class="text-center mb-4">Menu</h5>
-
       <ul class="list-unstyled" id="menuLateral">
         <li class="mb-3">
           <a class="nav-link text-white" onclick="carregarSolicitacoes()">Solicitações</a>
         </li>
-
         <li class="mb-3 d-none" id="menuPendentes">
           <a class="nav-link text-warning" onclick="filtrarPendentes()">Pendentes</a>
         </li>
-
         <li class="mb-3 d-none" id="menuHistorico">
           <a class="nav-link text-info" onclick="filtrarHistorico()">Histórico</a>
         </li>
-
         <li class="mb-3">
           <a onclick="logout()" class="nav-link text-danger">Sair</a>
         </li>
       </ul>
     </nav>
 
+    <!-- MAIN CONTENT -->
     <main class="flex-grow-1 p-4" style="margin-left:250px">
       <h5 id="saudacao" class="mb-3"></h5>
-
       <div class="d-flex justify-content-between mb-3">
         <h3>Solicitações</h3>
         <button id="btnNova" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createModal">
           + Nova Solicitação
         </button>
       </div>
-
       <div id="tableArea" class="card p-3 shadow-sm">
         Carregando...
       </div>
@@ -98,14 +97,14 @@
           <input id="video" type="file" class="form-control" accept="video/*">
         </div>
         <div class="modal-footer">
-          <button class="btn btn-primary w-100">Criar Solicitação</button>
+          <button type="submit" class="btn btn-primary w-100">Criar Solicitação</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- MODAL MÍDIAS -->
+<!-- MODAL GALERIA / MÍDIAS -->
 <div class="modal fade" id="mediaModal">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -114,7 +113,7 @@
         <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <div id="gallery" class="carousel-3d d-flex justify-content-center flex-wrap"></div>
+        <div id="gallery" class="carousel-3d d-flex justify-content-center flex-wrap gap-3"></div>
         <video id="videoPlayer" class="w-100 mt-3 d-none" controls></video>
       </div>
     </div>
