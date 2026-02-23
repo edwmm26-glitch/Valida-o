@@ -1,6 +1,6 @@
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: #f5f6f8;
+  font-family: system-ui, sans-serif;
+  background: #f8f9fa;
 }
 
 .bg-gradient-primary {
@@ -8,49 +8,45 @@ body {
 }
 
 .bg-gradient-dark {
-  background: linear-gradient(180deg, #343a40, #212529);
+  background: linear-gradient(180deg, #343a40 0%, #212529 100%);
 }
 
 .sidebar .nav-link {
   padding: 12px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s;
+  border-radius: 8px;
+  transition: all 0.3s;
 }
 
 .sidebar .nav-link:hover {
   background: rgba(255,255,255,0.15);
+  transform: translateX(5px);
 }
 
 .card {
   border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1050;
 }
 
 .loading-content {
-  width: 300px;
-  text-align: center;
-}
-
-.gallery-img {
-  cursor: zoom-in;
-  transition: .2s;
-}
-
-.gallery-img:hover {
-  transform: scale(1.03);
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  min-width: 250px;
 }
 
 .prioridade-Crítica { background: #dc3545; color: white; }
 .prioridade-Alta { background: #fd7e14; color: white; }
-.prioridade-Média { background: #0dcaf0; }
+.prioridade-Média { background: #0dcaf0; color: white; }
 .prioridade-Baixa { background: #6c757d; color: white; }
