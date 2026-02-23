@@ -5,20 +5,18 @@
   <title>Validação de Arte</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 <div id="loginPage" class="vh-100 d-flex align-items-center justify-content-center bg-gradient-primary">
   <div class="card p-4 shadow-lg" style="width:380px">
-
     <div class="text-center mb-3">
       <img src="imagens/logo.png" style="width:120px;">
     </div>
-
     <h4 class="text-center mb-3">Validação de Arte</h4>
-
     <form id="loginForm">
       <select id="equipeInput" class="form-select mb-2" required>
         <option value="" disabled selected>Selecione a equipe</option>
@@ -28,38 +26,44 @@
       <input id="senhaInput" type="password" class="form-control mb-3" placeholder="Senha" required>
       <button class="btn btn-primary w-100">Entrar</button>
     </form>
-
     <p id="loginError" class="text-danger text-center mt-2 d-none"></p>
   </div>
 </div>
 
-<!-- ================= SISTEMA ================= -->
+<!-- SISTEMA -->
 <div id="mainPage" class="d-none">
   <div class="d-flex">
-
-    <!-- SIDEBAR -->
-    <nav class="sidebar bg-dark text-white p-3 vh-100 position-fixed" style="width:250px">
+    <!-- SIDEBAR MODERNIZADA -->
+    <nav class="sidebar bg-gradient-dark text-white p-3 vh-100 position-fixed shadow-lg" style="width:250px; border-right: 1px solid rgba(255,255,255,0.1);">
       <div class="text-center mb-4">
-        <img src="imagens/logo.png" style="width:120px;">
+        <img src="imagens/logo.png" style="width:140px; border-radius: 10px;">
       </div>
-      <h5 class="text-center mb-4">Menu</h5>
+      <h5 class="text-center mb-4 text-uppercase fw-bold">Menu</h5>
       <ul class="list-unstyled" id="menuLateral">
         <li class="mb-3">
-          <a class="nav-link text-white" onclick="carregarSolicitacoes()">Solicitações</a>
+          <a class="nav-link d-flex align-items-center" onclick="carregarSolicitacoes()">
+            <i class="bi bi-list-task me-2"></i> Solicitações
+          </a>
         </li>
         <li class="mb-3 d-none" id="menuPendentes">
-          <a class="nav-link text-warning" onclick="filtrarPendentes()">Pendentes</a>
+          <a class="nav-link d-flex align-items-center text-warning" onclick="filtrarPendentes()">
+            <i class="bi bi-clock-history me-2"></i> Pendentes
+          </a>
         </li>
         <li class="mb-3 d-none" id="menuHistorico">
-          <a class="nav-link text-info" onclick="filtrarHistorico()">Histórico</a>
+          <a class="nav-link d-flex align-items-center text-info" onclick="filtrarHistorico()">
+            <i class="bi bi-archive me-2"></i> Histórico
+          </a>
         </li>
         <li class="mb-3">
-          <a onclick="logout()" class="nav-link text-danger">Sair</a>
+          <a class="nav-link d-flex align-items-center text-danger" onclick="logout()">
+            <i class="bi bi-box-arrow-right me-2"></i> Sair
+          </a>
         </li>
       </ul>
     </nav>
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN -->
     <main class="flex-grow-1 p-4" style="margin-left:250px">
       <h5 id="saudacao" class="mb-3"></h5>
       <div class="d-flex justify-content-between mb-3">
@@ -81,8 +85,8 @@
     <div class="modal-content">
       <form id="createForm">
         <div class="modal-header bg-primary text-white">
-          <h5>Nova Solicitação</h5>
-          <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          <h5 class="modal-title">Nova Solicitação</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body">
           <select id="nomeEquipe" class="form-select mb-3 d-none"></select>
@@ -104,24 +108,48 @@
   </div>
 </div>
 
-<!-- MODAL GALERIA / MÍDIAS -->
+<!-- MODAL GALERIA -->
 <div class="modal fade" id="mediaModal">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header bg-info text-white">
-        <h5>Mídias</h5>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        <h5 class="modal-title">Mídias</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <div id="gallery" class="carousel-3d d-flex justify-content-center flex-wrap gap-3"></div>
+        <div id="gallery" class="d-flex justify-content-center flex-wrap"></div>
         <video id="videoPlayer" class="w-100 mt-3 d-none" controls></video>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
-<div id="toastGlobal" class="toast-center"></div>
+<!-- OVERLAY LOADING (com progress ou spinner) -->
+<div id="loadingOverlay" class="loading-overlay d-none">
+  <div class="loading-content bg-white p-4 rounded shadow">
+    <h5 class="text-center mb-3">Processando...</h5>
+    <div id="progressBar" class="progress mb-3" style="height: 20px;">
+      <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 0%;"></div>
+    </div>
+    <p id="loadingMessage" class="text-center">Aguardando...</p>
+  </div>
+</div>
+
+<!-- MODAL RESULTADO PROFISSIONAL -->
+<div class="modal fade" id="resultModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header" id="resultHeader">
+        <h5 class="modal-title" id="resultTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="resultBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
