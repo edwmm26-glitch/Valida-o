@@ -7,69 +7,47 @@ body {
   background: linear-gradient(135deg, #0d6efd, #198754);
 }
 
-.sidebar {
-  width: 250px;
-  box-shadow: 2px 0 10px rgba(245, 245, 245, 0.15);
+.bg-gradient-dark {
+  background: linear-gradient(180deg, #343a40, #212529);
 }
 
-.nav-link {
-  padding: 10px;
-  border-radius: 6px;
+.sidebar .nav-link {
+  padding: 12px 20px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
-.nav-link:hover {
-  background: rgba(255,255,255,.1);
+.sidebar .nav-link:hover {
+  background: rgba(255,255,255,0.15);
 }
 
 .card {
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
 .loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(255,255,255,.85);
+  background: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 1050;
 }
 
-.priority-critica { background:#f8d7da }
-.priority-alta { background:#fff3cd }
-.priority-media { background:#e2e3e5 }
-.priority-baixa { background:#d1e7dd }
+.loading-content {
+  width: 300px;
+  text-align: center;
+}
 
 .gallery-img {
   cursor: zoom-in;
   transition: .2s;
 }
+
 .gallery-img:hover {
   transform: scale(1.03);
-}
-.toast-center {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  padding: 20px 40px;
-  border-radius: 10px;
-  font-size: 18px;
-  color: white;
-  display: none;
-}
-
-.carousel-3d {
-  perspective: 1000px;
-}
-
-.carousel-3d img {
-  width: 250px;
-  border-radius: 15px;
-  margin: 10px;
-  transition: transform 0.5s;
 }
 
 .prioridade-Crítica { background: #dc3545; color: white; }
