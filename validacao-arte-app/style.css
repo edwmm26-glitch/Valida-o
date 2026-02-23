@@ -1,52 +1,54 @@
 body {
   font-family: system-ui, sans-serif;
-  background: #f8f9fa;
+  background: #f5f6f8;
+  margin: 0;
 }
 
 .bg-gradient-primary {
   background: linear-gradient(135deg, #0d6efd, #198754);
 }
 
-.bg-gradient-dark {
-  background: linear-gradient(180deg, #343a40 0%, #212529 100%);
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+  background: #2c3e50; /* cor mais escura e profissional */
+  color: white;
+  box-shadow: 2px 0 15px rgba(0,0,0,0.3);
+  z-index: 1000;
 }
 
 .sidebar .nav-link {
+  color: #ecf0f1;
   padding: 12px 20px;
   border-radius: 8px;
   transition: all 0.3s;
 }
 
 .sidebar .nav-link:hover {
-  background: rgba(255,255,255,0.15);
+  background: #34495e;
+  color: white;
   transform: translateX(5px);
 }
 
-.card {
-  border-radius: 12px;
-  border: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.loading-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.loading-content {
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 900;
   background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  min-width: 250px;
 }
 
-.prioridade-Crítica { background: #dc3545; color: white; }
-.prioridade-Alta { background: #fd7e14; color: white; }
-.prioridade-Média { background: #0dcaf0; color: white; }
-.prioridade-Baixa { background: #6c757d; color: white; }
+/* Tabela com cabeçalho fixo */
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: #343a40;
+  color: white;
+  z-index: 10;
+}
+
+/* Container da tabela com scroll interno */
+#tableArea {
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  border-radius: 8px;
+}
