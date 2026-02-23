@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbymjw1sfK44O1RK_DcaPlGMuqW5Bx7bC8FPwqChaAxfCk_z7sA-bvle2kNLTCA1Er9ajw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwVFr55tn4rXFuie22Y0srxAjrw_elW-Qfo_EdnXhpUtcxEePm-fStW8itfCwgXq6Aw_g/exec"; // Atualize com sua URL
 
 let usuarioLogado = "";
 let listaGlobal = [];
@@ -193,4 +193,3 @@ async function carregarSolicitacoes() {
 }
 
 // ... Inclua as outras funções como filtrarPendentes, filtrarHistorico, ordenarPorPrioridade, renderJuridico, renderComunicacao, abrirGaleria, formatarData, fileToBase64, logout das versões anteriores.
-
