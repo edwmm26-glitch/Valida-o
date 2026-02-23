@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- ================= LOGIN ================= -->
 <div id="loginPage" class="vh-100 d-flex align-items-center justify-content-center bg-gradient-primary">
   <div class="card p-4 shadow-lg" style="width:380px">
     <div class="text-center mb-3">
@@ -24,22 +24,23 @@
         <option value="juridico">Jurídico</option>
       </select>
       <input id="senhaInput" type="password" class="form-control mb-3" placeholder="Senha" required>
-      <button class="btn btn-primary w-100">Entrar</button>
+      <button type="submit" class="btn btn-primary w-100">Entrar</button>
     </form>
     <p id="loginError" class="text-danger text-center mt-2 d-none"></p>
   </div>
 </div>
 
-<!-- SISTEMA -->
+<!-- ================= SISTEMA ================= -->
 <div id="mainPage" class="d-none">
   <div class="d-flex">
-    <!-- SIDEBAR MODERNIZADA -->
-    <nav class="sidebar bg-gradient-dark text-white p-3 vh-100 position-fixed shadow-lg" style="width:250px; border-right: 1px solid rgba(255,255,255,0.1);">
+
+    <!-- SIDEBAR -->
+    <nav class="sidebar bg-gradient-dark text-white p-3 vh-100 position-fixed shadow-lg" style="width:250px;">
       <div class="text-center mb-4">
-        <img src="imagens/logo.png" style="width:140px; border-radius: 10px;">
+        <img src="imagens/logo.png" style="width:140px; border-radius:10px;">
       </div>
       <h5 class="text-center mb-4 text-uppercase fw-bold">Menu</h5>
-      <ul class="list-unstyled" id="menuLateral">
+      <ul class="list-unstyled">
         <li class="mb-3">
           <a class="nav-link d-flex align-items-center" onclick="carregarSolicitacoes()">
             <i class="bi bi-list-task me-2"></i> Solicitações
@@ -90,7 +91,7 @@
         </div>
         <div class="modal-body">
           <select id="nomeEquipe" class="form-select mb-3 d-none"></select>
-          <textarea id="descricao" class="form-control mb-3" placeholder="Descrição" required></textarea>
+          <textarea id="descricao" class="form-control mb-3" placeholder="Descrição" required rows="3"></textarea>
           <select id="prioridade" class="form-select mb-3">
             <option value="Crítica">Crítica</option>
             <option value="Alta">Alta</option>
@@ -108,7 +109,7 @@
   </div>
 </div>
 
-<!-- MODAL GALERIA -->
+<!-- MODAL MÍDIAS -->
 <div class="modal fade" id="mediaModal">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
@@ -117,37 +118,18 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <div id="gallery" class="d-flex justify-content-center flex-wrap"></div>
+        <div id="gallery" class="d-flex justify-content-center flex-wrap gap-3"></div>
         <video id="videoPlayer" class="w-100 mt-3 d-none" controls></video>
       </div>
     </div>
   </div>
 </div>
 
-<!-- OVERLAY LOADING (com progress ou spinner) -->
+<!-- LOADING OVERLAY -->
 <div id="loadingOverlay" class="loading-overlay d-none">
-  <div class="loading-content bg-white p-4 rounded shadow">
-    <h5 class="text-center mb-3">Processando...</h5>
-    <div id="progressBar" class="progress mb-3" style="height: 20px;">
-      <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 0%;"></div>
-    </div>
-    <p id="loadingMessage" class="text-center">Aguardando...</p>
-  </div>
-</div>
-
-<!-- MODAL RESULTADO PROFISSIONAL -->
-<div class="modal fade" id="resultModal">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" id="resultHeader">
-        <h5 class="modal-title" id="resultTitle"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body" id="resultBody"></div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-      </div>
-    </div>
+  <div class="loading-content bg-white p-4 rounded shadow text-center">
+    <h5>Processando...</h5>
+    <div class="spinner-border text-primary mt-3" role="status"></div>
   </div>
 </div>
 
